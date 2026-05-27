@@ -51,8 +51,7 @@ public class GameServiceImpl extends GameServiceGrpc.GameServiceImplBase {
                 .setMatchId(matchId)
                 .setPlayerName(match.playerName())
                 .setOpponentName(match.opponentName())
-                .setMessage("Joined " + match.matchType() + " match " + matchId
-                        + " on " + difficulty + " difficulty. Click Play Match to let the server choose a winner.")
+                .setMessage(buildJoinSummary(matchId, playerName, match.opponentName(), difficulty, ranked)) // Implemented method
                 .build();
 
         responseObserver.onNext(response);

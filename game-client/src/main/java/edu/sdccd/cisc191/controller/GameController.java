@@ -209,8 +209,13 @@ public class GameController {
      * - Use "Normal" when difficulty is null or blank.
      * - Trim playerName and difficulty.
      */
-    public static String buildJoinLogMessage(String playerName, String difficulty, boolean ranked) {
-        return "TODO: build join log message";
+    public static String buildJoinLogMessage(String playerName, String difficulty, boolean ranked) { // Missing method implementation
+        return String.format(
+                "Joining %s match as %s on %s difficulty...",
+                (ranked) ? "ranked" : "casual",
+                (playerName == null || playerName.isBlank()) ? "Player" : playerName.trim(),
+                (difficulty == null || difficulty.isBlank()) ? "Normal" : difficulty.trim()
+        );
     }
 
     /**
@@ -222,9 +227,13 @@ public class GameController {
      * - If already on the JavaFX Application Thread, run action immediately.
      * - Otherwise, schedule it with Platform.runLater(action).
      */
-    public static void runOnFxThread(Runnable action) {
+    public static void runOnFxThread(Runnable action) { // Update to run on the JavaFX App Thread (
         if (action != null) {
-            action.run();
+            if (Platform.isFxApplicationThread()) {
+                action.run();
+            } else {
+                Platform.runLater(action);
+            }
         }
     }
 

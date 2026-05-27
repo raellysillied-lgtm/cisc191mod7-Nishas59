@@ -30,7 +30,8 @@
 
                 <CheckBox fx:id="rankedMatchCheckBox" text="Ranked" />
 
-                <!-- TODO 1: Add the match summary label described in the README. -->
+                <!-- TODO 1: Add the match summary label described in the README. --> // No label for the user, in order to view current match summary
+                <Label fx:id="matchSummaryLabel" text="Summary: No match" />
 
                 <Label text="Difficulty:" />
                 <ComboBox fx:id="difficultyComboBox"
